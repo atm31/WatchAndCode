@@ -1,0 +1,236 @@
+1. Understand the code to the best of your ability. (Use debugger and "expectations vs. reality" framework)
+2. Clearly describe the problem.
+3. Include your code so that I can run it on my computer.
+4. Format your code consistently and check yourself for typos.
+5. Describe what you've done so far to troubleshoot the problem.
+
+
+
+Quiz: V1 semicolons
+ URL: https://watchandcode.com/courses/350615/lectures/23512381
+
+
+var todos = ['Item 1', 'Item 2', 'Item 3'];   
+
+console.log(todos);  
+
+todos.push('Item 4');
+
+todos[0] = 'Item 1 updated';
+
+todos.splice(0, 1);
+
+
+Which of the following statements are true about the code above? (choose at least one)
+
+1. Every ] is followed immediately by a semicolon.  -- False the todos[0] has no semicolon line 11. 100%
+2. Every ) is followed immediately by a semicolon. -- True 100% All three instances are follow by semicolon.
+3. Every ' is followed immediately by a semicolon. -- False. 100% Some not immediately followed. Some have parenthesis or bracket or comma.1
+4. Every line of code ends with a semicolon. -- True, verified every line has semicolon.
+5. None of the above. False. 2 and 4 are true.
+
+
+
+Quiz Parameters and arguments
+https://watchandcode.com/courses/350615/lectures/22896261
+
+
+function exampleFunction(a, b) {
+  console.log(a);
+  console.log(b);
+}
+Call exampleFunction four times:
+
+With no arguments.
+With 1 argument.
+With 2 arguments.
+With 3 arguments.
+Based on these four function calls, which of the following statements are true? (select 1 or more)
+
+1. If exampleFunction is called with 0 arguments, a and b will be undefined. True. Tested no arguments.
+2. If exampleFunction is called with 1 argument, a will be undefined. False. 1 argument = b is undefined. A is defined as 1.
+3. If exampleFunction is called with 1 argument, b will be undefined. True. Tested passing 1 argument. A = 1 B = undefined.
+4. If exampleFunction is called with 3 arguments, the first argument will be ignored. False. Tested 3 arguments. 1 and 2 defined. 3 is undefined.
+5. If exampleFunction is called with 3 arguments, the third argument will be ignored. True? 3 is undefined for sure.
+
+
+Quiz V2 semicolons
+https://watchandcode.com/courses/350615/lectures/23638107
+
+
+var todos = ['Item 1', 'Item 2', 'Item 3'];
+
+console.log(todos);
+
+function add(todo) {
+  todos.push(todo);
+  console.log(todos);
+}
+
+function edit(position, newValue) {
+  todos[position] = newValue;
+  console.log(todos);
+}
+
+function remove(position) {
+  todos.splice(position, 1);
+  console.log(todos);
+}
+
+
+Which of the following statements are true about the code above? (choose at least one)
+
+Every ) is followed immediately by a ;. False. 100% 3 of them are not.
+Every line of code ends with a ;. False. 6 lines do not. function start and end do not.
+Every { is not followed by a ;. True. Checked open brackets.
+Every } is not followed by a ;. True. Checked closing brackets.
+Every line of code ends with a ;, except for lines that end in { or }. True. Checked lines that end in brackets do not have semicolons. All others do.
+None of the above. False. Because of 3, 4, 5 being true.
+
+
+Quiz: Visibility
+
+var outside = 'outside';
+
+function a() {
+  var aVar = 'a';
+  
+  function aInner1() {
+    var aInner1Var = 'aInner1Var';
+    
+    function aInner1Inner() {
+      var aInner1InnerVar = 'aInner1InnerVar'; 
+    }
+  }
+  
+  function aInner2(aInner2Param) {
+    var aInner2Var = aInner2Param;
+  }
+}
+
+function b(bParam) {
+  console.log(bParam);
+}
+
+
+
+Which of the following statements are true? Select 1 or more.
+
+1. a is visible to b       False. a is inside different function.
+2. b and bParam are visible to a    False. bParam not visible to a.
+3. aInner1InnerVar is only visible to aInner1Inner and aInner1   False. aInner1 no access.
+4. aInner1InnerVar is visible to aInner1Inner    True.  75% variable is inside same function as aInner1Inner
+5. aVar is visible to aInner2  True. 90%
+6. aInner1Var is visible to aInner2  False. 95%
+7. aInner2Param is visible to aInner1. False. 90%
+8. None of the above. False. 5 is true.
+
+
+
+Quiz: Objects
+
+var myArray = [{name: 'Gordon'}];
+
+function exampleFunction(thing) {
+  thing.name = 'changed by exampleFunction';
+  
+  thing.thing = {name: 'new thing'};
+}
+
+exampleFunction(myArray[0]);
+exampleFunction(myArray[0].thing);
+
+
+After the code above runs, which of the following statements will be true? (select at least one)
+
+1. At some point, myArray will have a length of 2.  False. 
+2. At some point, myArray[0].thing.name will be equal to 'new thing'. True. 100% Console log after first function runs.
+3. After the code runs, myArray[0].thing.thing.name will be equal to 'new thing'. True. 100% Console log myArray after code runs.
+4. None of the above. False. 100% 2 and 3 are true.
+
+
+
+
+var myBoolean = false;
+
+if (myBoolean) {
+  myBoolean = false;
+}
+
+if (myBoolean === false) {
+  myBoolean = true; //myBoolean changes to true
+}
+
+if (myBoolean) {  
+  myBoolean = true; //true = true no change
+} else {
+  myBoolean = false;
+}
+
+if (myBoolean) {
+  myBoolean = false; // true changes to false * 1st time
+}
+
+if (myBoolean === false) {
+  myBoolean = true; // myBoolean is false so changes to true
+}
+
+if (myBoolean) {
+  myBoolean = true; //true is true so equals true
+} else {
+  myBoolean = false;
+}
+
+
+
+In the above code, how many times will the value of myBoolean change from true to false?
+
+1. One time
+2. Two times
+3. Three times
+4. Zero times
+
+
+Quiz: Another experiment
+
+function function1(inputFunction, inputString) {  
+  return inputFunction(inputString);
+}
+
+function function2(thing) {
+  return thing;
+}
+
+var experiment = function1(function2, 'yolo');
+
+
+Which of the following statements are true?
+1. experiment will be equal to 'yolo' //true 100%
+2. When function1 runs, inputFunction will be equal to function2 //true
+3. When function1 runs, inputString will be equal to 'yolo' //true
+4. When function2 runs, thing will be equal to 'yolo' //true
+5. function2 will run twice //false
+6. function2 will run once //true
+
+
+QUIZ: Inputs
+
+var input1 = document.getElementById('input-1'); input1 = element with ID input-1
+var input1Value = input1.value; input1Value = element.value Ex. value is 'originalValue'
+input1Value = 'changed'; variable now goes from 'originalValue' = 'changed'  however the input1.value remains originalValue
+
+var input2 = input1; input2 = element with ID input-1
+input2.value = 'input 2';  element with ID input-1.value = 'input 2' 'originalValue' = 'input 2'
+
+input1.value = ''; 'originalvalue' = ''
+input2.value = ''; 'input 2' = ''
+
+
+
+Which of the above statements will be true?
+
+1. input1.value will be equal to 'changed' and then will be changed to ''. false
+2. input2.value will be equal to 'input 2' and then will be changed to ''. true
+3. None of the above. false
+
+Verify expectations by creating html document with input field with ID as above and run debugger checking values of variables along the way.
